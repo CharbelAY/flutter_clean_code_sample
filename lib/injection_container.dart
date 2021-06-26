@@ -6,14 +6,16 @@ import 'package:numbers_facts/features/number_trivia/presentation/blocs/number_t
 import 'package:numbers_facts/features/number_trivia/presentation/blocs/number_trivia_state.dart';
 import 'package:http/http.dart' as http;
 
+import 'auth/auth.dart';
 import 'core/util/input_converter.dart';
 import 'features/number_trivia/domain/repositories/numberTriviaRepository.dart';
 
 final serviceLocator = GetIt.instance;
 Future<void> init() async {
-
   serviceLocator.registerFactory(() => NumberTriviaBloc(
-      initialState: Empty(), getConcreteNumberUsecase: serviceLocator(), inputConverter: serviceLocator()));
+      initialState: Empty(),
+      getConcreteNumberUsecase: serviceLocator(),
+      inputConverter: serviceLocator()));
 
   serviceLocator.registerLazySingleton(
       () => GetConcreteNumberUsecase(numberTriviaRepository: serviceLocator()));
@@ -28,10 +30,5 @@ Future<void> init() async {
 
   serviceLocator.registerLazySingleton(() => InputConverter());
 
-
-
-
-
-
-
+  serviceLocator.registerLazySingleton(() => Authentication());
 }

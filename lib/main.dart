@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:numbers_facts/themes/theme.dart';
 import 'main_page.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -15,10 +16,7 @@ class NumbersFacts extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: ThemeManager.getThemes(),
       supportedLocales: [
         Locale('en', 'US'),
         Locale('fr', 'FR'),

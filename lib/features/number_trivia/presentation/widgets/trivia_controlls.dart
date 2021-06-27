@@ -12,17 +12,39 @@ class TriviaControlls extends StatefulWidget {
 
 class _TriviaControllsState extends State<TriviaControlls> {
   final controller = TextEditingController();
-  String inputString='-1';
+  String inputString='';
   @override
   Widget build(BuildContext context) {
+    final controller = TextEditingController();
+
     return Column(
       children: [
 
         SizedBox(height: 10),
         Row(
           children: [
+          Container(
+            width: 200,
+            child: TextField(
+            controller: controller,
+            keyboardType: TextInputType.numberWithOptions(),
+            onSubmitted: (_) {
+              dispatchConcrete();
+            },
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: "Input a number",
+            ),
+            onChanged: (value) {
+              inputString = value;
+            },
+                  ),
+          ),
             Expanded(
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Theme.of(context).accentColor
+                ),
                 onPressed: () {
                   dispatchConcrete();
                 }, 

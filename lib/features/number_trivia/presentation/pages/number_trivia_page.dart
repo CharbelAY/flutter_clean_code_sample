@@ -26,15 +26,14 @@ class NumberTriviaPage extends StatelessWidget {
             BlocBuilder<NumberTriviaBloc, NumberTriviaState>(
               builder: (context, state) {
                 if (state is Empty) {
-                  return MessageDisplay(message: "Click the button");
+                  return MessageDisplay(message: 'Begin Searching...');
                 } else if (state is Loading) {
                   return LoadingWidget();
                 } else if (state is Loaded) {
                   return TriviaDisplay(numberTrivia: state.numberTrivia);
-                } else if (state is Error)  {
+                } else if (state is Error) {
                   return MessageDisplay(message: state.errorMessage);
-                }
-                else {
+                } else {
                   throw Exception();
                 }
               },
